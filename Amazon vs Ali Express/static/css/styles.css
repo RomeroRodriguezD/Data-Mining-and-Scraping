@@ -1,0 +1,270 @@
+* {
+  box-sizing: border-box;
+}
+
+.top-block {
+        text-align: center;
+        font-size: 30px;
+        font-weight: bold;
+        font-style: italic;
+}
+
+.websites-head {
+
+        display: flex;
+        justify-content: space-between;
+        width: 70%;
+        margin: 0 auto; /* Centra el contenedor horizontalmente */
+        }
+
+.commerce-site {
+        font-size: 25px;
+        width: 50%;
+        text-align: center;
+        font-size: 25px;
+        font-weight: bold;
+        }
+
+.results-container {
+
+        display: flex;
+        justify-content: space-between;
+        width: 70%;
+        margin: 0 auto; /* Centra el contenedor horizontalmente */
+        }
+
+.column {
+
+        /* verflow-x:hidden; */
+
+        width: 50%;
+        padding: 10px;
+        margin: 0 auto;
+        }
+
+.product-item {
+
+    display: flex;
+    /* align-items: flex-start; */
+    margin-bottom: 40px;
+    min-height: 200px;
+    max-height: 227px;
+    border: 2px solid red;
+    padding: 15px;
+    align-items:center;
+    height: 227px;
+}
+
+.product-image {
+  width: 100%;
+  max-width: 154px;
+  max-height: 152px;
+  /* min-width: 100px;
+  /*min-height: 95px; */
+  height: auto;
+
+}
+
+.image-container {
+
+    display: flex;
+    max-width: 50%;
+   /* min-height: 50%; */
+    margin: 0 auto;
+
+}
+
+.product-details {
+    width: 50%;
+    font-size: 20px;
+    margin: 0 auto;
+    margin-left: 10px;
+}
+
+
+.product-feature b {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  max-height: 3em;
+  line-height: 1em;
+}
+/* Atributo para ver el nombre truncado con hover */
+.tooltip {
+  position: fixed;
+  background-color: white;
+  border: 1px solid black;
+  padding: 5px;
+  display: none;
+}
+
+
+/* Añadir media query A PARTIR DE 600 imagen debajo de características o al revés */
+ /* Cosas a modificar aún: tamaños de imágenes acordes
+    Imágenes alineadas a la derecha + padding
+    altura y anchura inicial imágenes -> En el html? -> HECHO, igualado a la baja
+    altura del product item acorde al tamaño
+    Que las product features no desborden la caja de product item
+    body descoloque: transición 1092 x 580 a 1368 x 645 -> Arreglar product items
+
+  */
+
+@media screen and (max-width: 1312px) {
+    /* 141 altura imagen, 144 anchura */
+    /* Fijar todos los elementos para que no se compriman más allá del scrollbar*/
+    body {
+
+    width: 1279px;
+
+    }
+    .top-block {
+        width: 1277px;
+    }
+
+   .websites-head {
+        width: 895px;
+    }
+
+    .commerce-site {
+        width: 447px;
+    }
+
+    .column {
+
+        width: 639px;
+    }
+
+    .results-container {
+    overflow-x: scroll;
+    width: 100%;
+  }
+
+ .product-item {
+
+    width: 613px;
+
+ }
+
+ .product-details {
+        width: 306.5px;
+    }
+
+    .image-container {
+
+        width: 306.5px;
+    }
+
+
+}
+/* Ignorada por ahora, saltamos de pantalla de PC con scroll horizontal a diseño móvil directamente */
+@media screen and (max-width: 768px) {
+    /* 141 altura imagen, 144 anchura */
+
+}
+
+@media screen and (max-width: 424px) {
+
+   body {
+
+    width: 424px;
+
+    }
+    .top-block {
+        width: 422px;
+        font-size: 21px;
+    }
+
+   .websites-head {
+        width: 350px;
+    }
+
+    .commerce-site {
+        width: 160px;
+        font-size: 16px;
+
+    }
+
+    .column {
+        padding: 5px;
+        width: 200px;
+        align-items: center;
+    }
+
+    .results-container {
+    overflow-x: hidden;x
+    width: 100%;
+  }
+
+ .product-item {
+
+    width: 170px;
+    /* Cambiar height para que entre todo, o bien espacidos */
+
+ }
+
+ .product-details {
+
+    width: 100%;
+    font-size: 12px;
+    margin: 0 auto;
+
+    }
+
+.product-image {
+  width: 100%;
+  max-width: 80px;
+  max-height: 80px;
+  /* min-width: 100px;
+  /*min-height: 95px; */
+  height: auto;
+    display: block;
+}
+
+.product-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.product-image {
+
+  /* margin: 0 auto; */
+}
+
+.product-feature {
+    margin-bottom: 3px;
+
+}
+ /* Ediciones para que el nombre del producto no desborde la caja. De paso aumentamos letra*/
+.product-feature b {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  max-height: 3em;
+  line-height: 1em;
+}
+/* Atributo para ver el nombre truncado con hover */
+.tooltip {
+  position: absolute;
+  background-color: white;
+  border: 1px solid black;
+  padding: 5px;
+  display: none;
+}
+ /* TODO: Reasignar la imagen debajo del nombre en tamaño pequeño
+    Resaltar el nombre largo truncado tras hover en todos los viewports.
+
+ */
+
+}
+
+
+

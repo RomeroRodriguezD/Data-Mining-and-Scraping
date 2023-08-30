@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<video autoplay muted loop id="video-background">
+    <source src="{{ url_for('static', filename='bg/space1.mp4') }}" type="video/mp4">
+</video>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ keyword.title() }} search</title>
+    <link rel="stylesheet" href="./static/css/clean_styles.css">
+    <!-- CSS Fonts Api Google -->
+    <link href="https://fonts.googleapis.com/css?family=Megrim|Roboto+Slab:300" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Fauna+One|Oleo+Script|Fugaz+One|Monda|Unica+One|Alegreya:400italic,400|Abril+Fatface|Vollkorn" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Darumadrop+One&amp;family=Wix+Madefor+Text&amp;display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="content">
+    <div class="upper-large">
+        <div class="navbar-large">
+            <div class="dropdown">
+                <button class="dropbtn">Download data</button>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('download_json') }}">Download JSON</a>
+                    <a href="{{ url_for('download_excel') }}">Download Excel Sheet</a>
+                </div>
+            </div>
+        </div>
+        <div class="title-amapress"><b>AmaPress: Compare products between the biggest sellers with just a keyword</b>
+        </div>
+        <!-- Navbar is hidden unless screen width <= 424px -->
+    </div>
+    <div class="navbar">
+        <div class="dropdown">
+            <button class="dropbtn">Download data</button>
+            <div class="dropdown-content">
+                <a href="{{ url_for('download_json') }}">Download JSON</a>
+                <a href="{{ url_for('download_excel') }}">Download Excel Sheet</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="key-container">
+        <div class="spacer"></div>
+        <div class="keyword">Product: <i>{{ keyword }}</i> </div>
+    </div>
+
+    <div class="top-block">
+        <div class="spacer">
+        </div>
+        <div class="websites-head">
+            <div class="commerce-site"><img src="{{ url_for('static', filename='images/Aliexpress-Logo1.png') }}" alt="AliExpress"></div>
+            <div class="commerce-site"><img src="{{ url_for('static', filename='images/amazon-logo.png') }}" alt="Amazon"></div>
+        </div>
+    </div>
+    <div class="data-block">
+        <div class="options-bar">
+        </div>
+        <div class="results-container">
+            <!-- AliExpress products -->
+            <div class="column">
+                {% for i in range(ali_products[0]|length) %}
+                <div class="product-item">
+                    <div class="product-details">
+                        <p class="product-feature" ><b data-tooltip="{{ ali_products[0][i] }}">{{ ali_products[0][i] }}</b></p>
+                        <p class="product-feature">Price: {{ ali_products[1][i] }}</p>
+                        <p class="product-feature">Review: {{ ali_products[2][i] }}</p>
+                        <p class="product-feature"><a href="https:{{ ali_products[3][i] }}">Product link</a></p>
+                    </div>
+                    <div class="image-container">
+                        <img class="product-image" src="{{ ali_products[4][i] }}"  alt="Imagen del producto">
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <!-- Amazon products -->
+            <div class="column">
+                {% for i in range(amazon_products[0]|length) %}
+                <div class="product-item">
+                    <div class="product-details">
+                        <p class="product-feature"><b data-tooltip="{{ amazon_products[0][i] }}">{{ amazon_products[0][i] }}</b></p>
+                        <p class="product-feature">Price: {{ amazon_products[1][i] }}€</p>
+                        <p class="product-feature">Review: {{ amazon_products[2][i] }}</p>
+                        <p class="product-feature"><a href="https://www.amazon.es/{{ amazon_products[3][i] }}">Product link</a></p>
+                    </div>
+                    <div class="image-container">
+                        <img class="product-image" src="{{ amazon_products[4][i] }}" alt="Imagen del producto">
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="footer">
+    Created and designed by <a href="https://github.com/RomeroRodriguezD">Chimpancé Inalámbrico</a>
+</footer>
+<script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>
